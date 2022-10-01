@@ -1,0 +1,22 @@
+{
+  "name": "govuk-prototype-kit-plops",
+  "version": "0.0.1",
+  "description": "Plop templates to help create pages quickly in govuk-prototype-kit",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgeherby/govuk-prototype-kit-plops.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgeherby/govuk-prototype-kit-plops/issues"
+  },
+  "homepage": "https://github.com/georgeherby/govuk-prototype-kit-plops#readme",
+  "dependencies": {
+    "plop": "^3.1.1"
+  }
+}
