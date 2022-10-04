@@ -1,11 +1,10 @@
-const guidancePage = require('./generators/guidance-page')
+const guidancePage = require('./app/generators/guidance-page');
+const textInputPage = require('./app/generators/text-input-page');
 
-module.exports = function (plop) {
+module.exports = function plopFile(plop) {
+  plop.addHelper('ng', (text) => `{{ ${text} }}`);
+  plop.setActionType('manual-steps', (_, config) => config.configProps);
 
-    plop.addHelper('ng', text => `{{ ${text} }}`);
-    plop.setActionType('manual-steps', function (answers, config, plop) {
-        return config.configProps;
-    });
-
-    guidancePage(plop);
+  guidancePage(plop);
+  textInputPage(plop);
 };
