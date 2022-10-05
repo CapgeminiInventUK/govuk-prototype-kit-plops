@@ -3,11 +3,8 @@ module.exports = function (router) {
     res.render('{{kebabCase pageName}}.njk');
   });
 
-  /*
-    TODO Handle form submission here.
-    For a page with no inputs just redirect to next page
-    */
   router.post('/{{kebabCase pageName }}', (req, res) => {
+    console.log(req.session.data['{{camelCase inputName}}'])
     res.redirect('/next-page')
   });
 }
