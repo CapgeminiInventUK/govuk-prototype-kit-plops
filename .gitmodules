@@ -1,0 +1,3 @@
+[submodule "govuk-prototype-kit"]
+	path = govuk-prototype-kit
+	url = https://github.com/alphagov/govuk-prototype-kit
