@@ -62,7 +62,7 @@ module.exports = function radioInputPage(plop) {
       actions.push({
         type: 'modify',
         path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-        templateFile: './app/templates/common/components/radio-input/radio-input.njk',
+        templateFile: './app/templates/common/components/radio-input/radio-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       });
 
@@ -84,14 +84,14 @@ module.exports = function radioInputPage(plop) {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/radio-input/segments/label-is-page-heading.njk',
+          templateFile: './app/templates/common/components/radio-input/segments/label-is-page-heading.njk.hbs',
           pattern: /{# INPUT_LABEL #}/gi,
         });
       } else {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/radio-input/segments/label-not-page-heading.njk',
+          templateFile: './app/templates/common/components/radio-input/segments/label-not-page-heading.njk.hbs',
           pattern: /{# INPUT_LABEL #}/gi,
         });
       }
@@ -99,7 +99,7 @@ module.exports = function radioInputPage(plop) {
       actions.push({
         type: 'modify',
         path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-        templateFile: './app/templates/common/components/button/continue-button.njk',
+        templateFile: './app/templates/common/components/button/continue-button.njk.hbs',
         pattern: /{# BUTTON #}/gi,
       });
 

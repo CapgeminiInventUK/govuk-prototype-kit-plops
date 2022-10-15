@@ -43,7 +43,14 @@ module.exports = function guidancePage(plop) {
       actions.push({
         type: 'modify',
         path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-        templateFile: data.isStartButton ? './app/templates/common/components/button/start-button.njk' : './app/templates/common/components/button/continue-button.njk',
+        template: '',
+        pattern: /{# FORM #}/gi,
+      });
+
+      actions.push({
+        type: 'modify',
+        path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+        templateFile: data.isStartButton ? './app/templates/common/components/button/start-button.njk.hbs' : './app/templates/common/components/button/continue-button.njk.hbs',
         pattern: /{# BUTTON #}/gi,
       });
 
