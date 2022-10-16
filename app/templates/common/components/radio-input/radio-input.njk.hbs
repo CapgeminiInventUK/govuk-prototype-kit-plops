@@ -1,13 +1,13 @@
 {{{ ng 
-        'govukInput({
-                id: "{# INPUT_ID #}",
-                name: "{# INPUT_NAME #}",
-                {# INPUT_LABEL #}
-                {# INPUT_PREFIX #}
-                {# INPUT_SUFFIX #}
-                hint: {
-                    text: "The name you will use on promotional material"
-                },
-                spellcheck: false
-            })'
+
+    'govukRadios({
+        id: "{# INPUT_ID #}",
+        name: "{# INPUT_NAME #}",
+        fieldset: {
+            legend: {# INPUT_LEGEND #}
+        },
+        {# INPUT_HINT #}
+        items: {# INPUT_ITEMS #}
+    })'
+
 }}}

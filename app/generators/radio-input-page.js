@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 module.exports = function radioInputPage(plop) {
   const projectPath = process.cwd();
 
@@ -7,7 +8,7 @@ module.exports = function radioInputPage(plop) {
       const { pageName } = await inquirer.prompt({
         type: 'input',
         name: 'pageName',
-        message: 'Page name, include spaces we will format the name accordingly',
+        message: 'Enter page name, this is used for the name of the files (include spaces we will format the name accordingly)',
       });
 
       const { isPageHeading } = await inquirer.prompt({
@@ -19,24 +20,102 @@ module.exports = function radioInputPage(plop) {
       const { label } = await inquirer.prompt({
         type: 'input',
         name: 'label',
-        message: 'Enter radio to show for input label',
+        message: isPageHeading ? 'Enter text to show as page header' : 'Enter text to show for input legend',
       });
 
       const { inputName } = await inquirer.prompt({
         type: 'input',
         name: 'inputName',
-        message: 'Enter name of the variable that will store the value of the input',
+        message: 'Enter name of the variable that will store the value of the selected radio button',
       });
 
-      // TODO add in the optional pages
+      const { hasHintOnQuestion } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'hasHintOnQuestion',
+        message: 'Do you need a hint for the question?',
+      });
+
+      let hintOnQuestion = '';
+      // TODO This does not get asked and its skipped over :()
+      if (hasHintOnQuestion) {
+        const { hint } = await inquirer.prompt({
+          type: 'input',
+          name: 'hint',
+          message: 'Enter the hint to be shown below the question',
+        });
+        hintOnQuestion = hint;
+      }
+
+      const { isStandardRadioButton } = await inquirer.prompt({
+        type: 'list',
+        name: 'isStandardRadioButton',
+        message: 'Select radio button size?',
+        choices: [{
+          name: 'Standard radio buttons',
+          short: 'standard',
+          value: true,
+        }, {
+          name: 'Small radio buttons',
+          short: 'small',
+          value: false,
+        }],
+      });
+
+      const { isInline } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'isInline',
+        message: 'Are radio buttons inline (limits to 2 choices)',
+      });
+
+      let numberOfQuestions = 2;
+      if (!isInline) {
+        const { numberOfRadioButtonsQuestions } = await inquirer.prompt({
+          type: 'number',
+          name: 'numberOfRadioButtonsQuestions',
+          message: 'Enter the number of radio buttons',
+          validate(questionCount) {
+            return questionCount >= 2 ? true : 'Minimum of 2 questions';
+          },
+        });
+        numberOfQuestions = numberOfRadioButtonsQuestions;
+      }
+
+      // TODO add loop for the questions
+      const items = []
+
+      for (let index = 1; index <= numberOfQuestions; index++) {
+        const { itemDisplayText } = await inquirer.prompt({
+          type: 'input',
+          name: 'itemDisplayText',
+          message: `Item ${index}: Text to display on radio button`,
+        });
+
+        const { itemValue } = await inquirer.prompt({
+          type: 'input',
+          name: 'itemValue',
+          message: `Item ${index}: Value when selected`,
+        });
+
+        items.push({
+          itemDisplayText,
+          itemValue,
+        })
+      }
 
       return Promise.resolve({
-        pageName, isPageHeading, label, inputName,
+        pageName,
+        isPageHeading,
+        label,
+        inputName,
+        hasHintOnQuestion,
+        hintOnQuestion,
+        isStandardRadioButton,
+        isInline,
+        numberOfQuestions,
+        items,
       });
     },
     actions(data) {
-      // TODO Correct for the input these are just placeholders from the text input version
-
       const actions = [];
       actions.push({
         type: 'add',
@@ -84,17 +163,45 @@ module.exports = function radioInputPage(plop) {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/radio-input/segments/label-is-page-heading.njk.hbs',
-          pattern: /{# INPUT_LABEL #}/gi,
+          templateFile: './app/templates/common/components/radio-input/segments/legend-one-question.njk.hbs',
+          pattern: /{# INPUT_LEGEND #}/gi,
         });
       } else {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/radio-input/segments/label-not-page-heading.njk.hbs',
-          pattern: /{# INPUT_LABEL #}/gi,
+          templateFile: './app/templates/common/components/radio-input/segments/legend-multiple-questions.njk.hbs',
+          pattern: /{# INPUT_LEGEND #}/gi,
         });
       }
+
+      if (data.hasHintOnQuestion) {
+        actions.push({
+          type: 'modify',
+          path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+          templateFile: './app/templates/common/components/radio-input/segments/input-hint.njk.hbs',
+          pattern: /{# INPUT_HINT #}/gi,
+        });
+      } else {
+        actions.push({
+          type: 'modify',
+          path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+          template: '',
+          pattern: /{# INPUT_HINT #}/gi,
+        });
+      }
+
+      const items = [];
+      for (const item of data.items) {
+        items.push(` { value: "${item.itemValue}", text: "${item.itemDisplayText}" }`);
+      }
+
+      actions.push({
+        type: 'modify',
+        path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+        template: `[\n ${items.join(',\n')}\n]`,
+        pattern: /{# INPUT_ITEMS #}/gi,
+      });
 
       actions.push({
         type: 'modify',
