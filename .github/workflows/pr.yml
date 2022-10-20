@@ -17,5 +17,5 @@ jobs:
       - name: Install
         run: npm i
       - name: 🧪 Run lint
-        run: eslint .
+        run: ./node_modules/.bin/eslint .
 
