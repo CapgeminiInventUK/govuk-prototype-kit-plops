@@ -11,7 +11,6 @@ module.exports = {
     'no-unsafe-regex',
     'sonarjs',
     'security',
-    'only-error',
   ],
   rules: {
     indent: [
