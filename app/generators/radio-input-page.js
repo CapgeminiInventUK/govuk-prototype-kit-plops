@@ -36,7 +36,6 @@ module.exports = function radioInputPage(plop) {
       });
 
       let hintOnQuestion = '';
-      // TODO This does not get asked and its skipped over :()
       if (hasHintOnQuestion) {
         const { hint } = await inquirer.prompt({
           type: 'input',
@@ -64,7 +63,7 @@ module.exports = function radioInputPage(plop) {
       const { isInline } = await inquirer.prompt({
         type: 'confirm',
         name: 'isInline',
-        message: 'Are radio buttons inline (limits to 2 choices)',
+        message: 'Are radio buttons inline (limits to 2 choices and no hints on radio buttons)',
       });
 
       let numberOfQuestions = 2;
@@ -80,7 +79,6 @@ module.exports = function radioInputPage(plop) {
         numberOfQuestions = numberOfRadioButtonsQuestions;
       }
 
-      // TODO add loop for the questions
       const items = []
 
       for (let index = 1; index <= numberOfQuestions; index++) {
@@ -95,6 +93,12 @@ module.exports = function radioInputPage(plop) {
           name: 'itemValue',
           message: `Item ${index}: Value when selected`,
         });
+
+        if (!isInline) {
+          // TODO Only allow (should ask) hints on radio buttons
+
+          // TODO Conditional reveal
+        }
 
         items.push({
           itemDisplayText,
@@ -172,6 +176,31 @@ module.exports = function radioInputPage(plop) {
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
           templateFile: './app/templates/common/components/radio-input/segments/legend-multiple-questions.njk.hbs',
           pattern: /{# INPUT_LEGEND #}/gi,
+        });
+      }
+
+      const inputGroupClasses = [];
+      if (data.isInline) {
+        inputGroupClasses.push('govuk-radios--inline');
+      }
+
+      if (!data.isStandardRadioButton) {
+        inputGroupClasses.push('govuk-radios--small');
+      }
+
+      if (inputGroupClasses.length > 0) {
+        actions.push({
+          type: 'modify',
+          path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+          template: `classes: "${inputGroupClasses.join(' ')}",`,
+          pattern: /{# INPUT_GROUP_CLASSES #}/gi,
+        });
+      } else {
+        actions.push({
+          type: 'modify',
+          path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+          template: '',
+          pattern: /{# INPUT_GROUP_CLASSES #}/gi,
         });
       }
 
