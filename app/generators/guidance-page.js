@@ -3,21 +3,16 @@ module.exports = function guidancePage(plop) {
 
   plop.setGenerator('guidance-page', {
     description: 'Create text only page',
-    prompts: async (inquirer) => {
-      const { pageName } = await inquirer.prompt({
-        type: 'input',
-        name: 'pageName',
-        message: 'Page name, include spaces we will format the name accordingly',
-      });
+    prompts: [{
+      type: 'input',
+      name: 'pageName',
+      message: 'Page name, include spaces we will format the name accordingly',
+    }, {
+      type: 'confirm',
+      name: 'isStartButton',
+      message: 'Do you need a start now button?',
+    }],
 
-      const { isStartButton } = await inquirer.prompt({
-        type: 'confirm',
-        name: 'isStartButton',
-        message: 'Do you need a start now button?',
-      });
-
-      return Promise.resolve({ pageName, isStartButton });
-    },
     actions(data) {
       const actions = [];
 
