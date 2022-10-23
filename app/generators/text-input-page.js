@@ -89,7 +89,7 @@ module.exports = function textInputPage(plop) {
       actions.push({
         type: 'modify',
         path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-        templateFile: './app/templates/common/components/text-input/text-input.njk',
+        templateFile: './app/templates/common/components/text-input/text-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       });
 
@@ -111,14 +111,14 @@ module.exports = function textInputPage(plop) {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/text-input/segments/label-is-page-heading.njk',
+          templateFile: './app/templates/common/components/text-input/segments/label-is-page-heading.njk.hbs',
           pattern: /{# INPUT_LABEL #}/gi,
         });
       } else {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/text-input/segments/label-not-page-heading.njk',
+          templateFile: './app/templates/common/components/text-input/segments/label-not-page-heading.njk.hbs',
           pattern: /{# INPUT_LABEL #}/gi,
         });
       }
@@ -127,7 +127,7 @@ module.exports = function textInputPage(plop) {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/text-input/segments/prefix.njk',
+          templateFile: './app/templates/common/components/text-input/segments/prefix.njk.hbs',
           pattern: /{# INPUT_PREFIX #}/gi,
         });
       } else {
@@ -142,7 +142,7 @@ module.exports = function textInputPage(plop) {
         actions.push({
           type: 'modify',
           path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-          templateFile: './app/templates/common/components/text-input/segments/suffix.njk',
+          templateFile: './app/templates/common/components/text-input/segments/suffix.njk.hbs',
           pattern: /{# INPUT_SUFFIX #}/gi,
         });
       } else {
@@ -157,7 +157,7 @@ module.exports = function textInputPage(plop) {
       actions.push({
         type: 'modify',
         path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-        templateFile: './app/templates/common/components/button/continue-button.njk',
+        templateFile: './app/templates/common/components/button/continue-button.njk.hbs',
         pattern: /{# BUTTON #}/gi,
       });
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+eslint .
 npx lint-staged
-npx check-outdated
+# npx check-outdated
 # npm test
