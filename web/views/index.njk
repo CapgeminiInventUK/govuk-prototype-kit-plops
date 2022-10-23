@@ -1,19 +1,9 @@
 {% extends "layout.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block content %}
-    <h1>Generate</h1>
+    <h1 class="govuk-heading-l">Available Plops</h1>
 
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="pageName">Page Name</label>
-            <input  name="pageName" id="pageName">
-        </div>
-
-        <div class="form-group">
-            <label for="isStartButton">Should green button be a Start Now button</label>
-            <input type="checkbox" name="isStartButton" id="isStartButton">
-        </div>
-
-        <input type="submit" value="Submit">
-    </form>
+    <a class="govuk-link" href='plops/guidance-page'>Guidance Page</a>
 
 {% endblock %}

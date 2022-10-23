@@ -1,10 +1,21 @@
-<!doctype html>
-<html  lang="en">
-  <head>
-    <title>TITLE</title>
-  </head>
-  <body>
-    {% block content %}
-    {% endblock %}
-  </body>
-</html>
+{% extends "govuk/template.njk" %}
+
+{% block pageTitle %}
+  GOV.UK Plops
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/public/stylesheets/govuk-frontend-4.3.1.min.css">
+{% endblock %}
+
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GOV.UK Plops",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
