@@ -6,6 +6,13 @@ module.exports = function radioInputActions(
   hasHintOnQuestion,
   radioItems,
 ) {
+  if (radioItems.length < 2) {
+    throw Error(`There should be a minimum of 2 radio items, ${radioItems.length} where provided`)
+  }
+  if (isInline && radioItems.length !== 2) {
+    throw Error(`There should be 2 radio items when inline, ${radioItems.length} items where provided`)
+  }
+
   const actions = [];
   actions.push({
     type: 'add',
