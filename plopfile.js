@@ -1,6 +1,6 @@
-const guidancePage = require('./app/generators/guidance-page');
-const textInputPage = require('./app/generators/text-input-page');
-const radioInputPage = require('./app/generators/radio-input-page');
+const guidancePage = require('./app/generators/guidance/guidance');
+const textInputPage = require('./app/generators/text-input/text-input');
+const radioInputPage = require('./app/generators/radio-input/radio-input');
 
 module.exports = function plopFile(plop) {
   plop.addHelper('ng', (text) => `{{ ${text} }}`);

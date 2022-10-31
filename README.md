@@ -17,4 +17,4 @@
     "generate:web": "./node_modules/govuk-prototype-kit-plops/web/bin/www",
     ```
 
-3. From within the prototype kit run `npm run plop` and then answer the CLI accordingly
+3. From within the prototype kit run `npm run generate:plop` and then answer the CLI accordingly and for the web run `npm run generate:web`
