@@ -34,7 +34,5 @@ module.exports = function guidanceActions(projectPath, isStartButton) {
     pattern: /{# BUTTON #}/gi,
   });
 
-  console.log(actions)
-
   return actions;
 }
