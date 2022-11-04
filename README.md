@@ -13,7 +13,8 @@
 2. Add the following to the `package.json` in the prototype kit
 
     ```json  
-    "plop": "plop --plopfile ./node_modules/govuk-prototype-kit-plops/plopfile.js",
+    "generate:plop": "plop --plopfile ./node_modules/govuk-prototype-kit-plops/plopfile.js",
+    "generate:web": "./node_modules/govuk-prototype-kit-plops/web-nunjucks/bin/www",
     ```
 
-3. From within the prototype kit run `npm run plop` and then answer the CLI accordingly
+3. From within the prototype kit run `npm run generate:plop` and then answer the CLI accordingly and for the web run `npm run generate:web`

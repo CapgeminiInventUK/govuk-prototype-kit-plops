@@ -3,5 +3,5 @@
 
 eslint .
 npx lint-staged
-# npx check-outdated
-# npm test
+npx check-outdated --ignore-packages node-plop
+npm test

@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">Guidance Page</h1>
+
+    <form action="#" method="post">
+
+        <p class="govuk-body">This page is a simple page that take no user input this is often used to give guidance to the user. It also can be used as the "start page" which can have a different green button</p>
+
+        {{ govukInput({
+            label: {
+                text: "Enter the page name"
+            },
+            hint: {
+                text: "This is used to create the page URL and the file names"
+            },
+            id: "pageName",
+            name: "pageName"
+        }) }}
+
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            id: "isStartButton",
+            name: "isStartButton",
+            fieldset: {
+                legend: {
+                text: "Do you need the green button to be a Start button",
+                isPageHeading: false
+                }
+            },
+            items: [
+                {
+                    value: true,
+                    text: "Yes"
+                },
+                {
+                    value: false,
+                    text: "No"
+                }
+            ]
+            }) }}
+            {{ govukInsetText({
+                text: "There is no validation on this page to make sure you populate for inputs otherwise it wont work!"
+            }) }}
+
+            {{ govukButton({
+                text: "Run"
+            }) }}
+    </form>
+
+{% endblock %}
