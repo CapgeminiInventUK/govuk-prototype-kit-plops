@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
 
-const guidancePage = require('./web/routes/guidance-page')
-const indexRouter = require('./web/routes/index')
+const guidancePage = require('./web-nunjucks/routes/guidance-page')
+const indexRouter = require('./web-nunjucks/routes/index')
 
 const app = express()
 
