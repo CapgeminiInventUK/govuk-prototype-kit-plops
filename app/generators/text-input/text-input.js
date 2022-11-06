@@ -1,4 +1,5 @@
 const textInputActions = require('./utils/text-input-actions')
+const commonPrompts = require('../utils/prompts/common-prompts')
 
 module.exports = function textInputPage(plop) {
   const projectPath = process.cwd();
@@ -6,11 +7,7 @@ module.exports = function textInputPage(plop) {
   plop.setGenerator('text-input-page', {
     description: 'Create text input page',
     prompts: async (inquirer) => {
-      const { pageName } = await inquirer.prompt({
-        type: 'input',
-        name: 'pageName',
-        message: 'Page name, include spaces we will format the name accordingly',
-      });
+      const commonPromptsResponses = await commonPrompts(inquirer)
 
       const { isPageHeading } = await inquirer.prompt({
         type: 'confirm',
@@ -62,7 +59,7 @@ module.exports = function textInputPage(plop) {
       }
 
       return Promise.resolve({
-        pageName,
+        ...commonPromptsResponses,
         isPageHeading,
         hasPrefix,
         customPrefix,

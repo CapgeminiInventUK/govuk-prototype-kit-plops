@@ -25,7 +25,7 @@ module.exports = function radioInputActions(
   actions.push({
     type: 'add',
     path: `${projectPath}/app/routes/{{kebabCase pageName}}.js`,
-    templateFile: './app/templates/radio-input/radio-input-controller.template.js',
+    templateFile: './app/templates/radio-input/controller/radio-input-controller.template.js',
   });
 
   actions.push({
@@ -38,7 +38,7 @@ module.exports = function radioInputActions(
   actions.push({
     type: 'modify',
     path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-    templateFile: './app/templates/common/components/radio-input/radio-input.njk.hbs',
+    templateFile: './app/templates/radio-input/view/radio-input.njk.hbs',
     pattern: /{# FORM #}/gi,
   });
 
@@ -60,14 +60,14 @@ module.exports = function radioInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/radio-input/segments/legend-one-question.njk.hbs',
+      templateFile: './app/templates/radio-input/view/segments/legend-one-question.njk.hbs',
       pattern: /{# INPUT_LEGEND #}/gi,
     });
   } else {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/radio-input/segments/legend-multiple-questions.njk.hbs',
+      templateFile: './app/templates/radio-input/view/segments/legend-multiple-questions.njk.hbs',
       pattern: /{# INPUT_LEGEND #}/gi,
     });
   }
@@ -101,7 +101,7 @@ module.exports = function radioInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/radio-input/segments/input-hint.njk.hbs',
+      templateFile: './app/templates/radio-input/view/segments/input-hint.njk.hbs',
       pattern: /{# INPUT_HINT #}/gi,
     });
   } else {

@@ -15,7 +15,7 @@ describe('Setup actions for guidance', () => {
       },
       {
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/guidance/guidance-controller.template.js',
+        templateFile: './app/templates/guidance/controller/guidance-controller.template.js',
         type: 'add',
       },
       {
@@ -50,7 +50,7 @@ describe('Setup actions for guidance', () => {
       },
       {
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/guidance/guidance-controller.template.js',
+        templateFile: './app/templates/guidance/controller/guidance-controller.template.js',
         type: 'add',
       },
       {

@@ -10,7 +10,7 @@ module.exports = function guidanceActions(projectPath, isStartButton) {
   actions.push({
     type: 'add',
     path: `${projectPath}/app/routes/{{kebabCase pageName}}.js`,
-    templateFile: './app/templates/guidance/guidance-controller.template.js',
+    templateFile: './app/templates/guidance/controller/guidance-controller.template.js',
   });
 
   actions.push({

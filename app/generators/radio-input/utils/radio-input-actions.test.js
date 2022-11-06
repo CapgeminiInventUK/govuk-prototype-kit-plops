@@ -30,7 +30,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'add',
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/radio-input/radio-input-controller.template.js',
+        templateFile: './app/templates/radio-input/controller/radio-input-controller.template.js',
       },
       {
         type: 'modify',
@@ -43,7 +43,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/radio-input.njk.hbs',
+        templateFile: './app/templates/radio-input/view/radio-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       },
       {
@@ -61,7 +61,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/segments/legend-multiple-questions.njk.hbs',
+        templateFile: './app/templates/radio-input/view/segments/legend-multiple-questions.njk.hbs',
         pattern: /{# INPUT_LEGEND #}/gi,
       },
       {
@@ -108,7 +108,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'add',
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/radio-input/radio-input-controller.template.js',
+        templateFile: './app/templates/radio-input/controller/radio-input-controller.template.js',
       },
       {
         type: 'modify',
@@ -121,7 +121,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/radio-input.njk.hbs',
+        templateFile: './app/templates/radio-input/view/radio-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       },
       {
@@ -139,7 +139,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/segments/legend-multiple-questions.njk.hbs',
+        templateFile: './app/templates/radio-input/view/segments/legend-multiple-questions.njk.hbs',
         pattern: /{# INPUT_LEGEND #}/gi,
       },
       {
@@ -186,7 +186,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'add',
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/radio-input/radio-input-controller.template.js',
+        templateFile: './app/templates/radio-input/controller/radio-input-controller.template.js',
       },
       {
         type: 'modify',
@@ -199,7 +199,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/radio-input.njk.hbs',
+        templateFile: './app/templates/radio-input/view/radio-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       },
       {
@@ -217,7 +217,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/segments/legend-one-question.njk.hbs',
+        templateFile: './app/templates/radio-input/view/segments/legend-one-question.njk.hbs',
         pattern: /{# INPUT_LEGEND #}/gi,
       },
       {
@@ -229,7 +229,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/radio-input/segments/input-hint.njk.hbs',
+        templateFile: './app/templates/radio-input/view/segments/input-hint.njk.hbs',
         pattern: /{# INPUT_HINT #}/gi,
       },
       {

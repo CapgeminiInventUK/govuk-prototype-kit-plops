@@ -16,7 +16,7 @@ module.exports = function textInputActions(
   actions.push({
     type: 'add',
     path: `${projectPath}/app/routes/{{kebabCase pageName}}.js`,
-    templateFile: './app/templates/text-input/text-input-controller.template.js',
+    templateFile: './app/templates/text-input/controller/text-input-controller.template.js',
   });
 
   actions.push({
@@ -29,7 +29,7 @@ module.exports = function textInputActions(
   actions.push({
     type: 'modify',
     path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-    templateFile: './app/templates/common/components/text-input/text-input.njk.hbs',
+    templateFile: './app/templates/text-input/view/text-input.njk.hbs',
     pattern: /{# FORM #}/gi,
   });
 
@@ -51,14 +51,14 @@ module.exports = function textInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/text-input/segments/label-is-page-heading.njk.hbs',
+      templateFile: './app/templates/text-input/view/segments/label-is-page-heading.njk.hbs',
       pattern: /{# INPUT_LABEL #}/gi,
     });
   } else {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/text-input/segments/label-not-page-heading.njk.hbs',
+      templateFile: './app/templates/text-input/view/segments/label-not-page-heading.njk.hbs',
       pattern: /{# INPUT_LABEL #}/gi,
     });
   }
@@ -67,7 +67,7 @@ module.exports = function textInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/text-input/segments/prefix.njk.hbs',
+      templateFile: './app/templates/text-input/view/segments/prefix.njk.hbs',
       pattern: /{# INPUT_PREFIX #}/gi,
     });
   } else {
@@ -82,7 +82,7 @@ module.exports = function textInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/common/components/text-input/segments/suffix.njk.hbs',
+      templateFile: './app/templates/text-input/view/segments/suffix.njk.hbs',
       pattern: /{# INPUT_SUFFIX #}/gi,
     });
   } else {

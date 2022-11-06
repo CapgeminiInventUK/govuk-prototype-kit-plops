@@ -1,5 +1,6 @@
 /* eslint-disable no-await-in-loop */
 const radioInputActions = require('./utils/radio-input-actions')
+const commonPrompts = require('../utils/prompts/common-prompts')
 
 module.exports = function radioInputPage(plop) {
   const projectPath = process.cwd();
@@ -7,11 +8,7 @@ module.exports = function radioInputPage(plop) {
   plop.setGenerator('radio-input-page', {
     description: 'Create radio input page',
     prompts: async (inquirer) => {
-      const { pageName } = await inquirer.prompt({
-        type: 'input',
-        name: 'pageName',
-        message: 'Enter page name, this is used for the name of the files (include spaces we will format the name accordingly)',
-      });
+      const commonPromptsResponses = await commonPrompts(inquirer)
 
       const { isPageHeading } = await inquirer.prompt({
         type: 'confirm',
@@ -109,7 +106,7 @@ module.exports = function radioInputPage(plop) {
       }
 
       return Promise.resolve({
-        pageName,
+        ...commonPromptsResponses,
         isPageHeading,
         label,
         inputName,
