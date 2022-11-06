@@ -17,7 +17,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'add',
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/text-input/text-input-controller.template.js',
+        templateFile: './app/templates/text-input/controller/text-input-controller.template.js',
       },
       {
         type: 'modify',
@@ -28,7 +28,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/text-input.njk.hbs',
+        templateFile: './app/templates/text-input/view/text-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       },
       {
@@ -46,7 +46,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/segments/label-not-page-heading.njk.hbs',
+        templateFile: './app/templates/text-input/view/segments/label-not-page-heading.njk.hbs',
         pattern: /{# INPUT_LABEL #}/gi,
       },
       {
@@ -84,7 +84,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'add',
         path: 'project/path/app/routes/{{kebabCase pageName}}.js',
-        templateFile: './app/templates/text-input/text-input-controller.template.js',
+        templateFile: './app/templates/text-input/controller/text-input-controller.template.js',
       },
       {
         type: 'modify',
@@ -95,7 +95,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/text-input.njk.hbs',
+        templateFile: './app/templates/text-input/view/text-input.njk.hbs',
         pattern: /{# FORM #}/gi,
       },
       {
@@ -113,19 +113,19 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/segments/label-is-page-heading.njk.hbs',
+        templateFile: './app/templates/text-input/view/segments/label-is-page-heading.njk.hbs',
         pattern: /{# INPUT_LABEL #}/gi,
       },
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/segments/prefix.njk.hbs',
+        templateFile: './app/templates/text-input/view/segments/prefix.njk.hbs',
         pattern: /{# INPUT_PREFIX #}/gi,
       },
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/common/components/text-input/segments/suffix.njk.hbs',
+        templateFile: './app/templates/text-input/view/segments/suffix.njk.hbs',
         pattern: /{# INPUT_SUFFIX #}/gi,
       },
       {

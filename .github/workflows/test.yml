@@ -1,4 +1,4 @@
-name: pr_workflow 
+name: test_workflow 
 
 on:
   push:
@@ -8,17 +8,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
       - name: 🚧 Node Setup
         uses: actions/setup-node@v3
         with:
+         cache: 'npm'
          node-version-file: '.nvmrc'
       - name: 🏗 Install dependencies
-        run: npm i
-      - name: 🔍 Run lint
-        run: ./node_modules/.bin/eslint .
+        run: npm install --omit=production
       - name: 🧪 Run test
         run: npm test
