@@ -6,7 +6,7 @@ describe('Setup actions for text input', () => {
   test('get action when everything is set to false', () => {
     const actions = textInputActions('project/path', false, false, false)
 
-    expect(actions.length).toBe(10);
+    expect(actions.length).toBe(11);
 
     expect(actions).toEqual([
       {
@@ -46,6 +46,12 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        templateFile: './app/templates/text-input/view/segments/input-width.njk.hbs',
+        pattern: /{# INPUT_CLASS #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         templateFile: './app/templates/text-input/view/segments/label-not-page-heading.njk.hbs',
         pattern: /{# INPUT_LABEL #}/gi,
       },
@@ -73,7 +79,7 @@ describe('Setup actions for text input', () => {
   test('get action when everything is set to true', () => {
     const actions = textInputActions('project/path', true, true, true)
 
-    expect(actions.length).toBe(10);
+    expect(actions.length).toBe(11);
 
     expect(actions).toEqual([
       {
@@ -109,6 +115,12 @@ describe('Setup actions for text input', () => {
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         template: '{{camelCase inputName}}',
         pattern: /{# INPUT_NAME #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        templateFile: './app/templates/text-input/view/segments/input-width.njk.hbs',
+        pattern: /{# INPUT_CLASS #}/gi,
       },
       {
         type: 'modify',
