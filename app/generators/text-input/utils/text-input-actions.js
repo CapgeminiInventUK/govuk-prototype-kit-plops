@@ -47,6 +47,13 @@ module.exports = function textInputActions(
     pattern: /{# INPUT_NAME #}/gi,
   });
 
+  actions.push({
+    type: 'modify',
+    path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+    templateFile: './app/templates/text-input/view/segments/input-width.njk.hbs',
+    pattern: /{# INPUT_CLASS #}/gi,
+  });
+
   if (isPageHeading) {
     actions.push({
       type: 'modify',
