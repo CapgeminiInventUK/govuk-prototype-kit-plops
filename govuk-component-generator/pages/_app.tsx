@@ -31,6 +31,13 @@ export default function App({ Component, pageProps }: AppProps) {
             Checkboxes
           </Link>
         </li>
+        <li className={path === '/radios' ? 'active' : ''}>
+          <Link
+            className="govuk-link govuk-link--no-visited-state govuk-link--no-underline"
+            href="/radios">
+            Radios
+          </Link>
+        </li>
         <li>
           Radios
         </li>
