@@ -20,12 +20,12 @@ const TextField = (props) => (
       (props.prefix || props.suffix) ? (
         <div className="govuk-input__wrapper">
           {props.prefix && <div className="govuk-input__prefix" aria-hidden="true">{props.prefix}</div>}
-          <input className={`govuk-input ${props.inputWidth}`} id={props.name} name={props.name} type="text" spellCheck="false" aria-describedby={`${props.name}-hint`}/>
+          <input className={`govuk-input ${props.inputWidth}`} id={props.name} name={props.name} type="text" inputMode={props.inputMode || undefined} autoComplete={props.autoComplete || undefined} spellCheck={props.spellCheck} aria-describedby={props.hint ? `${props.name}-hint` : undefined}/>
           {props.suffix && <div className="govuk-input__suffix" aria-hidden="true">{props.suffix}</div>}
         </div>
       )
         : (
-          <input className={`govuk-input ${props.inputWidth}`} id={props.name} name={props.name} type="text" aria-describedby={`${props.name}-hint`} />
+          <input className={`govuk-input ${props.inputWidth}`} id={props.name} name={props.name} type="text" inputMode={props.inputMode || undefined} autoComplete={props.autoComplete || undefined} spellCheck={props.spellCheck} aria-describedby={props.hint ? `${props.name}-hint` : undefined} />
         )
     }
   </div>)
