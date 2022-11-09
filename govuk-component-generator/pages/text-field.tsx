@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react'
-import TextField from '../components/govuk/TextField';
+import TextField, { InputMode, InputWidth } from '../components/govuk/TextField';
 import Input from '../components/Input';
 import PageLayout from '../components/PageLayout';
 
@@ -19,8 +19,14 @@ const inputWidths = [
 ];
 
 const inputModes = [
-  { label: 'Numeric', value: 'numeric' },
   { label: 'Decimal', value: 'decimal' },
+  { label: 'Email', value: 'email' },
+  { label: 'Numeric', value: 'numeric' },
+  { label: 'None', value: 'none' },
+  { label: 'Search', value: 'search' },
+  { label: 'Telephone', value: 'tel' },
+  { label: 'Text', value: 'text' },
+  { label: 'Url', value: 'url' },
 ];
 
 const autoCompletes = [
@@ -39,10 +45,10 @@ export default function Component() {
     label: 'Label',
     useLabelAsPageTitle: true,
     hint: '',
-    inputWidth: '',
+    inputWidth: '' as InputWidth,
     prefix: '',
     suffix: '',
-    inputMode: '',
+    inputMode: '' as InputMode,
     autoComplete: '',
     spellCheck: false,
   });
