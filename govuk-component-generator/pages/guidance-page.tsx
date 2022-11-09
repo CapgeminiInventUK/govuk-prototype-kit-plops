@@ -1,8 +1,7 @@
 import { SyntheticEvent, useState } from 'react'
 import Button from '../components/govuk/Button';
+import Input from '../components/Input';
 import PageLayout from '../components/PageLayout';
-
-
 
 export default function Component() {
   const [attrs, setAttrs] = useState({

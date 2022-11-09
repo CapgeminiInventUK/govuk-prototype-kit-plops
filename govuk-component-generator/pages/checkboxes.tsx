@@ -1,39 +1,9 @@
 import { SyntheticEvent, useState } from 'react'
-import styles from '../styles/checkboxes.module.css'
 import Image from 'next/image';
+import styles from '../styles/checkboxes.module.css'
 import Checkboxes from '../components/govuk/Checkboxes';
 import DeleteIcon from '../public/assets/images/delete-icon.png';
-
-const Input = (props) => (
-  props.type === 'checkbox' ? (
-    <>
-      <label className="govuk-!-margin-top-3">
-        <input
-          id={props.name}
-          name={props.name}
-          type="checkbox"
-          defaultChecked={props.defaultChecked}
-          onChange={props.handleChange} />
-        {props.label}
-      </label>
-    </>
-  ) : (
-    <>
-      <label
-        htmlFor={props.name}
-        className="govuk-!-margin-top-3"
-      >
-        {props.label}
-      </label>
-      <input
-        id={props.name}
-        name={props.name}
-        type="text"
-        defaultValue={props.defaultValue}
-        onChange={props.handleChange} />
-    </>
-  )
-);
+import Input from '../components/Input';
 
 export default function Component() {
   const [attrs, setAttrs] = useState({
