@@ -1,9 +1,7 @@
 const textInputActions = require('./utils/text-input-actions')
 const commonPrompts = require('../utils/prompts/common-prompts')
 
-module.exports = function textInputPage(plop) {
-  const projectPath = process.cwd();
-
+module.exports = function textInputPage(plop, projectPath) {
   plop.setGenerator('text-input-page', {
     description: 'Create text input page',
     prompts: async (inquirer) => {

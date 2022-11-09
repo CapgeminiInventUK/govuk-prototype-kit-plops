@@ -2,9 +2,7 @@
 const radioInputActions = require('./utils/radio-input-actions')
 const commonPrompts = require('../utils/prompts/common-prompts')
 
-module.exports = function radioInputPage(plop) {
-  const projectPath = process.cwd();
-
+module.exports = function radioInputPage(plop, projectPath) {
   plop.setGenerator('radio-input-page', {
     description: 'Create radio input page',
     prompts: async (inquirer) => {

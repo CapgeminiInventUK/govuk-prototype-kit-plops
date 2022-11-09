@@ -1,9 +1,7 @@
 const guidanceActions = require('./utils/guidance-actions');
 const commonPrompts = require('../utils/prompts/common-prompts');
 
-module.exports = function guidancePage(plop) {
-  const projectPath = process.cwd();
-
+module.exports = function guidancePage(plop, projectPath) {
   plop.setGenerator('guidance-page', {
     description: 'Create text only page',
     prompts: async (inquirer) => {
