@@ -1,5 +1,6 @@
 const textInputActions = require('./utils/text-input-actions')
 const commonPrompts = require('../utils/prompts/common-prompts')
+const hintPrompt = require('../utils/prompts/hint-prompt')
 
 module.exports = function textInputPage(plop) {
   const projectPath = process.cwd();
@@ -20,6 +21,8 @@ module.exports = function textInputPage(plop) {
         name: 'label',
         message: 'Enter text to show for input label',
       });
+
+      const hintPromptResponses = await hintPrompt(inquirer)
 
       const { inputName } = await inquirer.prompt({
         type: 'input',
@@ -118,11 +121,12 @@ module.exports = function textInputPage(plop) {
       });
       let prefix;
       if (hasPrefix) {
-        prefix = await inquirer.prompt({
+        const { inputPrefix } = await inquirer.prompt({
           type: 'input',
-          name: 'prefix',
+          name: 'inputPrefix',
           message: 'Enter text to show in prefix on input',
-        }).prefix;
+        });
+        prefix = inputPrefix;
       }
 
       const { hasSuffix } = await inquirer.prompt({
@@ -133,11 +137,12 @@ module.exports = function textInputPage(plop) {
 
       let suffix;
       if (hasSuffix) {
-        suffix = await inquirer.prompt({
+        const { inputSuffix } = await inquirer.prompt({
           type: 'input',
-          name: 'suffix',
+          name: 'inputSuffix',
           message: 'Enter text to show in suffix on input',
-        }).suffix;
+        });
+        suffix = inputSuffix;
       }
 
       return Promise.resolve({
@@ -145,7 +150,7 @@ module.exports = function textInputPage(plop) {
         label,
         isPageHeading,
         inputName,
-        // TODO Add Hint #5
+        ...hintPromptResponses,
         prefix,
         suffix,
         inputWidth,
@@ -158,6 +163,7 @@ module.exports = function textInputPage(plop) {
       return textInputActions(
         projectPath,
         data.isPageHeading,
+        data.hasHintOnQuestion,
         data.prefix,
         data.suffix,
       );

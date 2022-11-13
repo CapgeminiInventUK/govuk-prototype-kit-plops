@@ -1,6 +1,7 @@
 module.exports = function textInputActions(
   projectPath,
   isPageHeading,
+  hasHintOnQuestion,
   prefix,
   suffix,
 ) {
@@ -67,6 +68,22 @@ module.exports = function textInputActions(
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
       templateFile: './app/templates/text-input/view/segments/label-not-page-heading.njk.hbs',
       pattern: /{# INPUT_LABEL #}/gi,
+    });
+  }
+
+  if (hasHintOnQuestion) {
+    actions.push({
+      type: 'modify',
+      path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+      templateFile: './app/templates/common/view/segments/input-hint.njk.hbs',
+      pattern: /{# INPUT_HINT #}/gi,
+    });
+  } else {
+    actions.push({
+      type: 'modify',
+      path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+      template: '',
+      pattern: /{# INPUT_HINT #}/gi,
     });
   }
 

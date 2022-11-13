@@ -101,7 +101,7 @@ module.exports = function radioInputActions(
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
-      templateFile: './app/templates/radio-input/view/segments/input-hint.njk.hbs',
+      templateFile: './app/templates/common/view/segments/input-hint.njk.hbs',
       pattern: /{# INPUT_HINT #}/gi,
     });
   } else {
