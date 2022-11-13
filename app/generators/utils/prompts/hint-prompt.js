@@ -7,15 +7,15 @@ module.exports = async function hintPrompts(
     message: 'Do you need a hint for the question?',
   });
 
-  let hintOnQuestion;
+  let hint;
   if (hasHintOnQuestion) {
-    const { hint } = await inquirer.prompt({
+    const { hintOnQuestion } = await inquirer.prompt({
       type: 'input',
-      name: 'hint',
+      name: 'hintOnQuestion',
       message: 'Enter the hint to be shown below the question',
     });
-    hintOnQuestion = hint;
+    hint = hintOnQuestion;
   }
 
-  return { hasHintOnQuestion, hintOnQuestion };
+  return { hint };
 }

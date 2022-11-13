@@ -110,7 +110,7 @@ module.exports = function radioInputPage(plop) {
         data.isPageHeading,
         data.isInline,
         data.isStandardRadioButton,
-        data.hasHintOnQuestion,
+        data.hint,
         data.items,
       );
     },

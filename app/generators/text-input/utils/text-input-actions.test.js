@@ -4,7 +4,7 @@ const textInputActions = require('./text-input-actions')
 
 describe('Setup actions for text input', () => {
   test('get action when everything is set to false', () => {
-    const actions = textInputActions('project/path', false, false, false, false)
+    const actions = textInputActions('project/path', false, undefined, undefined, undefined)
 
     expect(actions.length).toBe(12);
 
@@ -83,7 +83,7 @@ describe('Setup actions for text input', () => {
   });
 
   test('get action when everything is set to true', () => {
-    const actions = textInputActions('project/path', true, true, true, true)
+    const actions = textInputActions('project/path', true, 'Question hint', '£', 'kg')
 
     expect(actions.length).toBe(12);
 

@@ -3,7 +3,7 @@ module.exports = function radioInputActions(
   isPageHeading,
   isInline,
   isStandardRadioButton,
-  hasHintOnQuestion,
+  hint,
   radioItems,
 ) {
   if (radioItems.length < 2) {
@@ -97,7 +97,7 @@ module.exports = function radioInputActions(
     });
   }
 
-  if (hasHintOnQuestion) {
+  if (hint) {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
