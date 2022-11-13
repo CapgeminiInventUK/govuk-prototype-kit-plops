@@ -4,6 +4,7 @@ module.exports = function textInputActions(
   hint,
   prefix,
   suffix,
+  spellcheck,
 ) {
   const actions = [];
   actions.push({
@@ -117,6 +118,13 @@ module.exports = function textInputActions(
       pattern: /{# INPUT_SUFFIX #}/gi,
     });
   }
+
+  actions.push({
+    type: 'modify',
+    path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+    template: spellcheck,
+    pattern: /{# INPUT_SPELLCHECK #}/gi,
+  });
 
   actions.push({
     type: 'modify',

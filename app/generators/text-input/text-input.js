@@ -145,6 +145,12 @@ module.exports = function textInputPage(plop) {
         suffix = inputSuffix;
       }
 
+      const { spellcheck } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'spellcheck',
+        message: 'Enable spellcheck?',
+      });
+
       return Promise.resolve({
         ...commonPromptsResponses,
         label,
@@ -156,7 +162,7 @@ module.exports = function textInputPage(plop) {
         inputWidth,
         // TODO Add inputmode #16
         // TODO Add spellcheck #13
-        // TODO Add autocomplete #12
+        spellcheck: spellcheck.toString(),
       });
     },
     actions(data) {
@@ -166,6 +172,7 @@ module.exports = function textInputPage(plop) {
         data.hint,
         data.prefix,
         data.suffix,
+        data.spellcheck,
       );
     },
   });
