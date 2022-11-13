@@ -116,14 +116,13 @@ module.exports = function textInputPage(plop) {
         name: 'hasPrefix',
         message: 'Does the input have a prefix?',
       });
-      let customPrefix;
+      let prefix;
       if (hasPrefix) {
-        const { prefix } = await inquirer.prompt({
+        prefix = await inquirer.prompt({
           type: 'input',
           name: 'prefix',
           message: 'Enter text to show in prefix on input',
-        });
-        customPrefix = prefix;
+        }).prefix;
       }
 
       const { hasSuffix } = await inquirer.prompt({
@@ -132,34 +131,35 @@ module.exports = function textInputPage(plop) {
         message: 'Does the input have a suffix?',
       });
 
-      let customSuffix;
+      let suffix;
       if (hasSuffix) {
-        const { suffix } = await inquirer.prompt({
+        suffix = await inquirer.prompt({
           type: 'input',
           name: 'suffix',
           message: 'Enter text to show in suffix on input',
-        });
-        customSuffix = suffix;
+        }).suffix;
       }
 
       return Promise.resolve({
         ...commonPromptsResponses,
-        isPageHeading,
-        hasPrefix,
-        customPrefix,
-        hasSuffix,
-        customSuffix,
         label,
+        isPageHeading,
         inputName,
+        // TODO Add Hint #5
+        prefix,
+        suffix,
         inputWidth,
+        // TODO Add inputmode #16
+        // TODO Add spellcheck #13
+        // TODO Add autocomplete #12
       });
     },
     actions(data) {
       return textInputActions(
         projectPath,
         data.isPageHeading,
-        data.hasPrefix,
-        data.hasSuffix,
+        data.prefix,
+        data.suffix,
       );
     },
   });
