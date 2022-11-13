@@ -5,6 +5,7 @@ module.exports = function textInputActions(
   prefix,
   suffix,
   spellcheck,
+  autocomplete,
 ) {
   const actions = [];
   actions.push({
@@ -116,6 +117,22 @@ module.exports = function textInputActions(
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
       template: '',
       pattern: /{# INPUT_SUFFIX #}/gi,
+    });
+  }
+
+  if (autocomplete) {
+    actions.push({
+      type: 'modify',
+      path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+      templateFile: './app/templates/common/view/segments/input-autocomplete.njk.hbs',
+      pattern: /{# INPUT_AUTOCOMPLETE #}/gi,
+    });
+  } else {
+    actions.push({
+      type: 'modify',
+      path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
+      template: '',
+      pattern: /{# INPUT_AUTOCOMPLETE #}/gi,
     });
   }
 
