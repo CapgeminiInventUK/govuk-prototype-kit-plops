@@ -4,9 +4,9 @@ const textInputActions = require('./text-input-actions')
 
 describe('Setup actions for text input', () => {
   test('get action when everything is set to false', () => {
-    const actions = textInputActions('project/path', false, undefined, undefined, undefined, false)
+    const actions = textInputActions('project/path', false, undefined, undefined, undefined, false, undefined)
 
-    expect(actions.length).toBe(13);
+    expect(actions.length).toBe(14);
 
     expect(actions).toEqual([
       {
@@ -76,6 +76,12 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        template: '',
+        pattern: /{# INPUT_AUTOCOMPLETE #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         template: false,
         pattern: /{# INPUT_SPELLCHECK #}/gi,
       },
@@ -89,9 +95,9 @@ describe('Setup actions for text input', () => {
   });
 
   test('get action when everything is set to true', () => {
-    const actions = textInputActions('project/path', true, 'Question hint', '£', 'kg', true)
+    const actions = textInputActions('project/path', true, 'Question hint', '£', 'kg', true, 'postal-code')
 
-    expect(actions.length).toBe(13);
+    expect(actions.length).toBe(14);
 
     expect(actions).toEqual([
       {
@@ -157,6 +163,12 @@ describe('Setup actions for text input', () => {
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         templateFile: './app/templates/text-input/view/segments/suffix.njk.hbs',
         pattern: /{# INPUT_SUFFIX #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        templateFile: './app/templates/common/view/segments/input-autocomplete.njk.hbs',
+        pattern: /{# INPUT_AUTOCOMPLETE #}/gi,
       },
       {
         type: 'modify',

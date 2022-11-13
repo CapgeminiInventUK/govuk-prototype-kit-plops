@@ -1,6 +1,7 @@
 const textInputActions = require('./utils/text-input-actions')
 const commonPrompts = require('../utils/prompts/common-prompts')
 const hintPrompt = require('../utils/prompts/hint-prompt')
+const autocompletePrompts = require('../utils/prompts/autocomplete-prompt')
 
 module.exports = function textInputPage(plop) {
   const projectPath = process.cwd();
@@ -151,6 +152,8 @@ module.exports = function textInputPage(plop) {
         message: 'Enable spellcheck?',
       });
 
+      const autocompletePromptsResponses = await autocompletePrompts(inquirer)
+
       return Promise.resolve({
         ...commonPromptsResponses,
         label,
@@ -161,7 +164,7 @@ module.exports = function textInputPage(plop) {
         suffix,
         inputWidth,
         // TODO Add inputmode #16
-        // TODO Add spellcheck #13
+        ...autocompletePromptsResponses,
         spellcheck: spellcheck.toString(),
       });
     },
@@ -173,6 +176,7 @@ module.exports = function textInputPage(plop) {
         data.prefix,
         data.suffix,
         data.spellcheck,
+        data.autocomplete,
       );
     },
   });
