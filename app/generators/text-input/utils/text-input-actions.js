@@ -1,8 +1,8 @@
 module.exports = function textInputActions(
   projectPath,
   isPageHeading,
-  hasPrefix,
-  hasSuffix,
+  prefix,
+  suffix,
 ) {
   const actions = [];
   actions.push({
@@ -70,7 +70,7 @@ module.exports = function textInputActions(
     });
   }
 
-  if (hasPrefix) {
+  if (prefix) {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
@@ -85,7 +85,7 @@ module.exports = function textInputActions(
       pattern: /{# INPUT_PREFIX #}/gi,
     });
   }
-  if (hasSuffix) {
+  if (suffix) {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,
