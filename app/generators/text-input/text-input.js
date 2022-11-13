@@ -163,7 +163,7 @@ module.exports = function textInputPage(plop) {
       return textInputActions(
         projectPath,
         data.isPageHeading,
-        data.hasHintOnQuestion,
+        data.hint,
         data.prefix,
         data.suffix,
       );

@@ -1,7 +1,7 @@
 module.exports = function textInputActions(
   projectPath,
   isPageHeading,
-  hasHintOnQuestion,
+  hint,
   prefix,
   suffix,
 ) {
@@ -71,7 +71,7 @@ module.exports = function textInputActions(
     });
   }
 
-  if (hasHintOnQuestion) {
+  if (hint) {
     actions.push({
       type: 'modify',
       path: `${projectPath}/app/views/{{kebabCase pageName}}.njk`,

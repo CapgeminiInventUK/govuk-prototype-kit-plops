@@ -5,21 +5,21 @@ const radioInputActions = require('./radio-input-actions')
 describe('Setup actions for text input', () => {
   describe('Errors', () => {
     test('Less than 2 radio items provided', () => {
-      const actions = () => radioInputActions('project/path', false, false, false, false, [])
+      const actions = () => radioInputActions('project/path', false, false, false, undefined, [])
 
       expect(actions).toThrow(Error)
       expect(actions).toThrow('There should be a minimum of 2 radio items, 0 where provided')
     });
 
     test('When inline and number of radio buttons is not 2', () => {
-      const actions = () => radioInputActions('project/path', false, true, false, false, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }, { itemDisplayText: 'radio3', itemValue: 3 }])
+      const actions = () => radioInputActions('project/path', false, true, false, undefined, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }, { itemDisplayText: 'radio3', itemValue: 3 }])
 
       expect(actions).toThrow(Error)
       expect(actions).toThrow('There should be 2 radio items when inline, 3 items where provided')
     });
   });
   test('run action with every set to false and 2 radio items', () => {
-    const actions = radioInputActions('project/path', false, false, false, false, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }])
+    const actions = radioInputActions('project/path', false, false, false, undefined, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }])
     expect(actions.length).toBe(11)
     expect(actions).toEqual([
       {
@@ -95,7 +95,7 @@ describe('Setup actions for text input', () => {
   })
 
   test('run action with every set to false and 4 radio items', () => {
-    const actions = radioInputActions('project/path', false, false, false, false, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }, { itemDisplayText: 'radio3', itemValue: 3 }, { itemDisplayText: 'radio4', itemValue: 4 }])
+    const actions = radioInputActions('project/path', false, false, false, undefined, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }, { itemDisplayText: 'radio3', itemValue: 3 }, { itemDisplayText: 'radio4', itemValue: 4 }])
 
     expect(actions.length).toBe(11)
 
@@ -175,7 +175,7 @@ describe('Setup actions for text input', () => {
   })
 
   test('run action with every set to true and 2 radio items', () => {
-    const actions = radioInputActions('project/path', true, true, true, true, [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }])
+    const actions = radioInputActions('project/path', true, true, true, 'Hint entered', [{ itemDisplayText: 'radio1', itemValue: 1 }, { itemDisplayText: 'radio2', itemValue: 2 }])
     expect(actions.length).toBe(11)
     expect(actions).toEqual([
       {
