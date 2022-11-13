@@ -4,9 +4,9 @@ const textInputActions = require('./text-input-actions')
 
 describe('Setup actions for text input', () => {
   test('get action when everything is set to false', () => {
-    const actions = textInputActions('project/path', false, false, false)
+    const actions = textInputActions('project/path', false, false, false, false)
 
-    expect(actions.length).toBe(11);
+    expect(actions.length).toBe(12);
 
     expect(actions).toEqual([
       {
@@ -59,6 +59,12 @@ describe('Setup actions for text input', () => {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         template: '',
+        pattern: /{# INPUT_HINT #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        template: '',
         pattern: /{# INPUT_PREFIX #}/gi,
       },
       {
@@ -77,9 +83,9 @@ describe('Setup actions for text input', () => {
   });
 
   test('get action when everything is set to true', () => {
-    const actions = textInputActions('project/path', true, true, true)
+    const actions = textInputActions('project/path', true, true, true, true)
 
-    expect(actions.length).toBe(11);
+    expect(actions.length).toBe(12);
 
     expect(actions).toEqual([
       {
@@ -127,6 +133,12 @@ describe('Setup actions for text input', () => {
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
         templateFile: './app/templates/text-input/view/segments/label-is-page-heading.njk.hbs',
         pattern: /{# INPUT_LABEL #}/gi,
+      },
+      {
+        type: 'modify',
+        path: 'project/path/app/views/{{kebabCase pageName}}.njk',
+        templateFile: './app/templates/common/view/segments/input-hint.njk.hbs',
+        pattern: /{# INPUT_HINT #}/gi,
       },
       {
         type: 'modify',

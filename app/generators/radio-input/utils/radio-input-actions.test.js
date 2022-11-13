@@ -229,7 +229,7 @@ describe('Setup actions for text input', () => {
       {
         type: 'modify',
         path: 'project/path/app/views/{{kebabCase pageName}}.njk',
-        templateFile: './app/templates/radio-input/view/segments/input-hint.njk.hbs',
+        templateFile: './app/templates/common/view/segments/input-hint.njk.hbs',
         pattern: /{# INPUT_HINT #}/gi,
       },
       {

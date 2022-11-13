@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 const radioInputActions = require('./utils/radio-input-actions')
-const commonPrompts = require('../utils/prompts/common-prompts')
+const commonPrompts = require('../utils/prompts/common-prompts');
+const hintPrompt = require('../utils/prompts/hint-prompt');
 
 module.exports = function radioInputPage(plop) {
   const projectPath = process.cwd();
@@ -28,21 +29,7 @@ module.exports = function radioInputPage(plop) {
         message: 'Enter name of the variable that will store the value of the selected radio button',
       });
 
-      const { hasHintOnQuestion } = await inquirer.prompt({
-        type: 'confirm',
-        name: 'hasHintOnQuestion',
-        message: 'Do you need a hint for the question?',
-      });
-
-      let hintOnQuestion;
-      if (hasHintOnQuestion) {
-        const { hint } = await inquirer.prompt({
-          type: 'input',
-          name: 'hint',
-          message: 'Enter the hint to be shown below the question',
-        });
-        hintOnQuestion = hint;
-      }
+      const hintPromptResponses = await hintPrompt(inquirer)
 
       const { isStandardRadioButton } = await inquirer.prompt({
         type: 'list',
@@ -110,8 +97,7 @@ module.exports = function radioInputPage(plop) {
         isPageHeading,
         label,
         inputName,
-        hasHintOnQuestion,
-        hintOnQuestion,
+        ...hintPromptResponses,
         isStandardRadioButton,
         isInline,
         numberOfQuestions,
