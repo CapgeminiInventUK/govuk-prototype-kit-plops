@@ -1,0 +1,34 @@
+.radioItemsContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #878686;
+  margin-top: 15px;
+}
+
+.radioItemContainerOdd {
+  display: flex;
+  flex-direction: column;
+  background: #c5c3c3;
+  padding: 0rem 0.5rem;
+  border-bottom: 1px solid #878686;
+}
+
+.radioItemContainerEven {
+  display: flex;
+  flex-direction: column;
+  background: #fbfbfb;
+  padding: 0rem 0.5rem;
+}
+
+.radioItemText {
+  flex: 1;
+}
+
+.radioItemValue {
+  flex: 1;
+}
+
+.addNewItemButton {
+  align-self: center;
+  margin-top: 10px;
+}
