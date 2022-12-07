@@ -41,16 +41,17 @@ const autoCompletes = [
 
 export default function Component() {
   const [attrs, setAttrs] = useState({
-    name: 'text-field-1',
+    pageName: 'text-field-page',
+    inputName: 'text-field-1',
     label: 'Label',
-    useLabelAsPageTitle: true,
+    isPageHeading: true,
     hint: '',
     inputWidth: '' as InputWidth,
     prefix: '',
     suffix: '',
     inputMode: '' as InputMode,
-    autoComplete: '',
-    spellCheck: false,
+    autocomplete: '',
+    spellcheck: false,
   });
 
   const handleChange = (e: SyntheticEvent) => {
@@ -77,9 +78,16 @@ export default function Component() {
         <div className="componentAttributes">
           <input type="hidden" name="plopfile" value="text-input-page" />
           <Input
-            name="name"
-            label="Name / id"
-            defaultValue={attrs.name}
+            name="pageName"
+            label="Page name"
+            defaultValue={attrs.pageName}
+            handleChange={handleChange}
+          />
+
+          <Input
+            name="inputName"
+            label="Input name / id"
+            defaultValue={attrs.inputName}
             handleChange={handleChange}
           />
 
@@ -92,9 +100,9 @@ export default function Component() {
 
           <Input
             type="checkbox"
-            name="useLabelAsPageTitle"
+            name="isPageHeading"
             label="Use field label as page title"
-            defaultChecked={attrs.useLabelAsPageTitle}
+            defaultChecked={attrs.isPageHeading}
             handleChange={handleCheckboxToggle}
           />
 
@@ -139,18 +147,18 @@ export default function Component() {
 
           <Input
             type="select"
-            name="autoComplete"
+            name="autocomplete"
             label="Autocomplete (optional)"
             options={autoCompletes}
-            defaultValue={attrs.autoComplete}
+            defaultValue={attrs.autocomplete}
             handleChange={handleChange}
           />
 
           <Input
             type="checkbox"
-            name="spellCheck"
+            name="spellcheck"
             label="Spellcheck (optional)"
-            defaultChecked={attrs.spellCheck}
+            defaultChecked={attrs.spellcheck}
             handleChange={handleCheckboxToggle}
           />
           <button className='govuk-!-margin-top-4' type="submit">Generate</button>

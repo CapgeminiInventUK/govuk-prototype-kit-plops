@@ -36,7 +36,7 @@ export default function Component() {
         <div className="componentAttributes">
           <input type="hidden" name="plopfile" value="guidance-page" />
           <Input
-            name="page-name"
+            name="pageName"
             label="Page name"
             defaultValue={attrs.pageName}
             handleChange={handleChange}

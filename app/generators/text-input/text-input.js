@@ -3,9 +3,7 @@ const commonPrompts = require('../utils/prompts/common-prompts')
 const hintPrompt = require('../utils/prompts/hint-prompt')
 const autocompletePrompts = require('../utils/prompts/autocomplete-prompt')
 
-module.exports = function textInputPage(plop) {
-  const projectPath = process.cwd();
-
+module.exports = function textInputPage(plop, projectPath) {
   plop.setGenerator('text-input-page', {
     description: 'Create text input page',
     prompts: async (inquirer) => {

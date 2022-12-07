@@ -9,11 +9,11 @@ export default async function handler(
   const plop = await nodePlop('../plopfile.js');
 
   const {
-    'page-name': pageName, withStartButton, plopfile, ...rest
+    plopfile, ...rest
   } = req.body;
   const page = plop.getGenerator(plopfile);
 
-  const results = await page.runActions({ pageName, isStartButton: !!withStartButton, ...rest });
+  const results = await page.runActions({ ...rest });
 
   if (results.failures.length) {
     res.statusCode = 400;
