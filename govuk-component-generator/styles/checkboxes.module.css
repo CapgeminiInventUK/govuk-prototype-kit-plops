@@ -1,0 +1,27 @@
+.checkboxItemsContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #878686;
+  margin-top: 15px;
+  padding: 0rem 0.5rem;
+}
+
+.checkboxItemRow {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 10px;
+}
+
+.checkboxItemText {
+  flex: 1;
+}
+
+.checkboxItemValue {
+  flex: 1;
+}
+
+.addNewItemButton {
+  align-self: center;
+  margin-top: 10px;
+}

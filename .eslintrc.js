@@ -28,5 +28,5 @@ module.exports = {
     'import/extensions': 0,
     'no-underscore-dangle': 0,
   },
-  ignorePatterns: ['**/govuk-prototype-kit/**'],
+  ignorePatterns: ['**/govuk-prototype-kit/**', '**/govuk-component-generator/**'],
 }

@@ -1,1 +1,4 @@
 tests/*.test.js
+/govuk-component-generator/
+/node_modules/
+/govuk-prototype-kit/
