@@ -285,7 +285,7 @@ fabric.properties
 # Cache file creation bug
 # See https://youtrack.jetbrains.com/issue/JBR-2257
 .idea/$CACHE_FILE$
-
+.idea
 # CodeStream plugin
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
@@ -296,3 +296,4 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/node,git,visualstudiocode,webstorm
 .DS_Store
+
